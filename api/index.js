@@ -280,7 +280,7 @@ app.post("/api/lyrics", async (req, res) => {
 
     console.log(`[${requestId}] レスポンスデータのキー: ${Object.keys(responseData).join(", ")}`);
     console.log(`[${requestId}] lyrics長: ${responseData.lyrics.length}文字`);
-    console.log(`[${requestId}] translation長: ${responseData.translation.length}文字`);
+    console.log(`[${requestId}] interpretation長: ${responseData.interpretation.length}文字`);
     console.log(`[${requestId}] ✅ レスポンス送信完了`);
     return res.json(responseData);
   } catch (err) {

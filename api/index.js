@@ -273,7 +273,6 @@ app.post("/api/lyrics", async (req, res) => {
       artist: songArtist,
       geniusUrl,
       lyrics: analysis.lyrics,
-      translation: analysis.translation,
       interpretation: analysis.interpretation,
       background: analysis.background,
       artistInfo: analysis.artistInfo,

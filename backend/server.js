@@ -240,7 +240,7 @@ app.post("/api/lyrics", async (req, res) => {
       console.log(`[${requestId}] 歌詞ソース: Claude にフォールバック ⚠️`);
     }
 
-    // Step 3: Claude API で翻訳・解説を生成
+    // Step 3: Claude API で歌詞分析を生成
     console.log(`[${requestId}] [Claude] リクエスト開始...`);
     if (!process.env.ANTHROPIC_API_KEY) {
       console.log(`[${requestId}] [Claude] ❌ ANTHROPIC_API_KEY が未設定`);
@@ -254,7 +254,6 @@ app.post("/api/lyrics", async (req, res) => {
       artist: songArtist,
       geniusUrl,
       lyrics: analysis.lyrics,
-      translation: analysis.translation,
       interpretation: analysis.interpretation,
       background: analysis.background,
       artistInfo: analysis.artistInfo,
@@ -262,7 +261,7 @@ app.post("/api/lyrics", async (req, res) => {
 
     console.log(`[${requestId}] レスポンスデータのキー: ${Object.keys(responseData).join(", ")}`);
     console.log(`[${requestId}] lyrics長: ${responseData.lyrics.length}文字`);
-    console.log(`[${requestId}] translation長: ${responseData.translation.length}文字`);
+    console.log(`[${requestId}] interpretation長: ${responseData.interpretation.length}文字`);
     console.log(`[${requestId}] ✅ レスポンス送信完了`);
     return res.json(responseData);
   } catch (err) {
